@@ -13,7 +13,11 @@ def func(job: Job):
     # Do something with the job
     job.data["foo"] += 1
 
-queue = Queue(schema=[("foo", SQLDataType.INTEGER, [SQLColumnConditions.NOT_NULL])])
+queue = Queue(schema=[
+    ("foo", SQLDataType.INTEGER, [SQLColumnConditions.NOT_NULL]), 
+    ("bar", SQLDataType.TEXT, [SQLColumnConditions.NOT_NULL]), 
+    ("baz", SQLDataType.JSON, [SQLColumnConditions.NOT_NULL])
+])
 worker = Worker(queue, func)
 
 queue.insert(Job(data={"foo": 1, "bar": "test", "baz": {"foo": "bar"}}))
