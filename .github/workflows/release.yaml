@@ -17,7 +17,7 @@ jobs:
       - name: Publish to pypi
         uses: ./.github/actions/publish
         with:
-          version: ${{ env.VERSION }}
+          version: ${{ inputs.version }}
           pypi_token: ${{ secrets.PYPI_TOKEN }}
           gpat_token: ${{ secrets.GPAT_TOKEN }}
 
