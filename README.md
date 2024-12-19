@@ -47,3 +47,14 @@ queue = Queue(schema=[("foo", SQLDataType.INTEGER, [SQLColumnConditions.NOT_NULL
 worker = Worker(queue, func, logger=logger)
 worker.run()
 ```
+
+## Concurrent Worker
+
+The concurrent worker is a worker that runs jobs in parallel. It uses a thread pool to run the jobs.
+
+```python
+from pytask import Queue, ConcurrentWorker, Job, SQLDataType, SQLColumnConditions
+
+worker = ConcurrentWorker(queue, func, logger=logger, interval=1, max_workers=16)
+worker.run()
+```

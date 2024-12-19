@@ -2,9 +2,9 @@ import os
 import sqlite3
 from typing import Any
 
-from pytask.queue.constants import BASE_SCHEMA, DEFAULT_PATH
+from pytask.task_queue.constants import BASE_SCHEMA, DEFAULT_PATH
 from pytask.job.job import Job
-from pytask.queue.types import SQLDataType, SQLColumnConditions
+from pytask.task_queue.types import SQLDataType, SQLColumnConditions
 import json
 
 from pytask.flags import Flags
@@ -110,6 +110,9 @@ class Queue:
 
             if row:
                 job = Job.create_from_row(row)
+
+                job.status = "running"
+                self.update(job)
 
                 if self.flags.auto_convert_json_keys:
                     self.__load_json_keys(job)

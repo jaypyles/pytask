@@ -11,12 +11,11 @@ class Flags:
         If True, the job will be popped from the queue after processing.
     """
 
-    auto_convert_json_keys: bool = False
-    auto_convert_json_keys: bool = False
+    auto_convert_json_keys: bool = True
     pop_after_processing: bool = False
 
     def __init__(
-        self, auto_convert_json_keys: bool = False, pop_after_processing: bool = False
+        self, auto_convert_json_keys: bool = True, pop_after_processing: bool = False
     ):
         self.auto_convert_json_keys = auto_convert_json_keys
         self.pop_after_processing = pop_after_processing

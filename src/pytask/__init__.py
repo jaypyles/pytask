@@ -1,7 +1,15 @@
-from .queue import Queue
-from .worker import Worker
+from .task_queue import Queue
+from .worker import Worker, ConcurrentWorker
 from .job import Job
 from .flags import Flags
-from .queue.types import SQLDataType, SQLColumnConditions
+from .task_queue.types import SQLDataType, SQLColumnConditions
 
-__all__ = ["Queue", "Worker", "Job", "Flags", "SQLDataType", "SQLColumnConditions"]
+__all__ = [
+    "Queue",
+    "Worker",
+    "ConcurrentWorker",
+    "Job",
+    "Flags",
+    "SQLDataType",
+    "SQLColumnConditions",
+]

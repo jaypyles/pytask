@@ -1,6 +1,6 @@
 [project]
 name = "pytask-queue"
-version = "0.1.4"
+version = "0.1.6"
 description = "A simple queue for Python tasks"
 authors = [{ name = "Jayden Pyles", email = "jpylesbusiness@gmail.com" }]
 dependencies = ["typing-extensions>=4.12.2"]
