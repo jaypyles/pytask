@@ -24,7 +24,12 @@ queue.insert(Job(data={"foo": 1, "bar": "test", "baz": {"foo": "bar"}}))
 
 ```python
 # python process 2
-import queue from <relative_file>
+from <relative_file> import queue
+from pytask import Job
+
+def func(job: Job):
+    # Do something with job
+    job.data["foo"] += 1
 
 worker = Worker(queue, func)
 worker.run()
