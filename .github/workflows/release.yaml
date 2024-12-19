@@ -19,6 +19,6 @@ jobs:
         with:
           version: ${{ env.VERSION }}
           pypi_token: ${{ secrets.PYPI_TOKEN }}
-
+          gpat_token: ${{ secrets.GPAT_TOKEN }}
 
 

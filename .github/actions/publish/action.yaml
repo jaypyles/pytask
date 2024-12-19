@@ -11,11 +11,17 @@ inputs:
     description: The PyPI token to use
     required: true
 
+  gpat_token:
+    description: The Github token to use
+    required: true
+
 runs:
   using: composite
   steps:
-    - name: Checkout
+    - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        token: ${{ inputs.gpat_token }}
 
     - name: Set up PDM
       uses: pdm-project/setup-pdm@v4
