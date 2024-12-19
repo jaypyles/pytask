@@ -18,8 +18,6 @@ queue = Queue(schema=[
 queue.insert(Job(data={"foo": 1, "bar": "test", "baz": {"foo": "bar"}}))
 ```
 
-# python process 2
-
 ```python
 # python process 2
 import queue from <relative_file>
