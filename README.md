@@ -11,6 +11,8 @@ queue = Queue(schema=[("foo", SQLDataType.INTEGER, [SQLColumnConditions.NOT_NULL
 worker = Worker(queue, func)
 
 queue.insert(Job(data={"foo": 1, "bar": "test", "baz": {"foo": "bar"}}))
+
+worker.run()
 ```
 
 Creating multiple queues or multiple workers is possible. Creating a new queue object won't actually create a new queue, it just creates a new connection to the queue. Which means you can have multiple queue objects pointing to the same queue, or you can use the same queue object for multiple workers.
