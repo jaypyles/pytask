@@ -1,0 +1,19 @@
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        description: The version to release
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish to pypi
+        uses: ./.github/actions/publish
+        with:
+          version: ${{ env.VERSION }}
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
+
+
+

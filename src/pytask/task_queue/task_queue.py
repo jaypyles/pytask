@@ -187,7 +187,8 @@ class Queue:
 
     def __dump_json_keys(self, job: Job):
         for key in self.json_keys:
-            job.data[key] = json.dumps(job.data[key])
+            if not isinstance(job.data[key], str):
+                job.data[key] = json.dumps(job.data[key])
 
     def __get_json_keys(self) -> list[str]:
         json_keys: list[str] = []

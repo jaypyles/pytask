@@ -1,0 +1,42 @@
+name: Publish
+
+description: Publish a package to PyPI
+
+inputs:
+  version:
+    description: The version to release
+    required: true
+
+  pypi_token:
+    description: The PyPI token to use
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up PDM
+      uses: pdm-project/setup-pdm@v4
+      with:
+        python-version: 3.10.5
+
+    - name: Update package versions
+      run: |
+        sed -i "s/^version = \".*/version = \"${{ inputs.version }}\"/" pyproject.toml
+      shell: bash
+
+    - name: Commit version changes to repo
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "github-actions@github.com"
+        git add pyproject.toml
+
+        git commit -m "Update version to ${{ inputs.version }}"
+        git push origin master
+      shell: bash
+
+    - name: Publish
+      run: pdm publish -u __token__ -P ${{ inputs.pypi_token }} -r pypi -p .
+      shell: bash

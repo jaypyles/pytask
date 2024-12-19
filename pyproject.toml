@@ -1,12 +1,15 @@
 [project]
 name = "pytask-queue"
-version = "0.1.6"
+version = "1.0.0"
 description = "A simple queue for Python tasks"
 authors = [{ name = "Jayden Pyles", email = "jpylesbusiness@gmail.com" }]
 dependencies = ["typing-extensions>=4.12.2"]
 requires-python = ">=3.10"
 readme = "README.md"
 license = { text = "MIT" }
+
+[project.urls]
+repository = "https://github.com/jaypyles/pytask"
 
 [tool.pdm]
 distribution = true
@@ -41,3 +44,10 @@ import_heading_stdlib = "STL"
 import_heading_thirdparty = "PDM"
 import_heading_firstparty = "LOCAL"
 import_heading_localfolder = "LOCAL"
+
+[tool.pdm.resolution]
+respect-source-order = true
+
+[[tool.pdm.source]]
+name = "pypi"
+url = "https://pypi.org/simple"
