@@ -2,6 +2,10 @@
 
 A simple sqlite3-based job queue with a worker. Main purpose is to run jobs in a queue. Jobs are not popped from the queue, which means the queue can act as a history.
 
+## Installation
+
+`pip install pytask-queue`
+
 ## Usage
 
 The worker will run the function `func` for each job. The function will be passed a `Job` object. Which means that you can alter the job object in the function, and the newly updated job will be saved to the queue. 
