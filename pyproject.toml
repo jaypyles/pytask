@@ -1,0 +1,43 @@
+[project]
+name = "pytask-queue"
+version = "0.1.4"
+description = "A simple queue for Python tasks"
+authors = [{ name = "Jayden Pyles", email = "jpylesbusiness@gmail.com" }]
+dependencies = ["typing-extensions>=4.12.2"]
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.dev-dependencies]
+dev = ["ipython>=8.26.0"]
+
+[tool.pyright]
+include = ["./src/"]
+exclude = ["**/__pycache__"]
+ignore = []
+defineConstant = { DEBUG = true }
+stubPath = ""
+
+reportMissingImports = true
+reportMissingTypeStubs = false
+reportAny = false
+reportUnknownVariableType = false
+reportUnknownMemberType = false
+reportExplicitAny = false
+reportCallInDefaultInitializer = false
+
+pythonVersion = "3.10"
+pythonPlatform = "Linux"
+
+
+[tool.isort]
+length_sort = "1"
+profile = "black"
+sections = "STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
+import_heading_stdlib = "STL"
+import_heading_thirdparty = "PDM"
+import_heading_firstparty = "LOCAL"
+import_heading_localfolder = "LOCAL"
