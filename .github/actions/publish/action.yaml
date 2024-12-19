@@ -34,7 +34,7 @@ runs:
         git add pyproject.toml
 
         git commit -m "Update version to ${{ inputs.version }}"
-        git push origin master
+        git push origin main
       shell: bash
 
     - name: Publish
