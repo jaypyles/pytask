@@ -7,21 +7,24 @@ A simple sqlite3-based job queue with a worker. Main purpose is to run jobs in a
 The worker will run the function `func` for each job. The function will be passed a `Job` object. Which means that you can alter the job object in the function, and the newly updated job will be saved to the queue. 
 
 ```python
-from pytask import Queue, Worker, Job, SQLDataType, SQLColumnConditions
-
-def func(job: Job):
-    # Do something with the job
-    job.data["foo"] += 1
+# python process 1
+from pytask import Queue, Job, SQLDataType, SQLColumnConditions
 
 queue = Queue(schema=[
     ("foo", SQLDataType.INTEGER, [SQLColumnConditions.NOT_NULL]), 
     ("bar", SQLDataType.TEXT, [SQLColumnConditions.NOT_NULL]), 
     ("baz", SQLDataType.JSON, [SQLColumnConditions.NOT_NULL])
 ])
-worker = Worker(queue, func)
-
 queue.insert(Job(data={"foo": 1, "bar": "test", "baz": {"foo": "bar"}}))
+```
 
+# python process 2
+
+```python
+# python process 2
+import queue from <relative_file>
+
+worker = Worker(queue, func)
 worker.run()
 ```
 
