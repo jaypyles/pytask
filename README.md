@@ -1,4 +1,4 @@
-![Logo Picture](https://github.com/jaypyles/pytask/raw/master/docs/worker.png)
+![Logo Picture](https://github.com/jaypyles/pytask/blob/main/docs/worker.png)
 
 # pytask
 
