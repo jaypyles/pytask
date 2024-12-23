@@ -4,6 +4,10 @@
 
 A simple sqlite3-based job queue with a worker. Main purpose is to run jobs in a queue. Jobs are not popped from the queue, which means the queue can act as a history.
 
+## Installation
+
+`pip install pytask-queue`
+
 ## Usage
 
 The worker will run the function `func` for each job. The function will be passed a `Job` object. Which means that you can alter the job object in the function, and the newly updated job will be saved to the queue. 
@@ -20,11 +24,14 @@ queue = Queue(schema=[
 queue.insert(Job(data={"foo": 1, "bar": "test", "baz": {"foo": "bar"}}))
 ```
 
-# python process 2
-
 ```python
 # python process 2
-import queue from <relative_file>
+from <relative_file> import queue
+from pytask import Job
+
+def func(job: Job):
+    # Do something with job
+    job.data["foo"] += 1
 
 worker = Worker(queue, func)
 worker.run()
