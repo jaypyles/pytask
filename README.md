@@ -1,3 +1,5 @@
+![logo_picture](https://github.com/jaypyles/pytask/blob/master/docs/worker.png)
+
 # pytask
 
 A simple sqlite3-based job queue with a worker. Main purpose is to run jobs in a queue. Jobs are not popped from the queue, which means the queue can act as a history.
